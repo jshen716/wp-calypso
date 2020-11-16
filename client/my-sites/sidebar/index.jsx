@@ -519,7 +519,7 @@ export class MySitesSidebar extends Component {
 		this.onNavigate();
 	};
 
-	upgrades() {
+	domains() {
 		const { path, translate, canUserManageOptions } = this.props;
 
 		if ( isEnabled( 'signup/wpforteams' ) && this.props.isSiteWPForTeams ) {
@@ -994,7 +994,7 @@ export class MySitesSidebar extends Component {
 						materialIcon="settings"
 					>
 						{ this.hosting() }
-						{ this.upgrades() }
+						{ this.domains() }
 						{ this.users() }
 						{ this.siteSettings() }
 					</ExpandableSidebarMenu>
