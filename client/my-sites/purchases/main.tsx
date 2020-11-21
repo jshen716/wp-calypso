@@ -27,6 +27,7 @@ import {
 import { getChangeOrAddPaymentMethodUrlFor } from './utils';
 import AddPaymentMethod from 'calypso/me/purchases/manage-purchase/add-payment-method';
 import ChangePaymentMethod from 'calypso/me/purchases/manage-purchase/change-payment-method';
+import titles from 'calypso/me/purchases/titles';
 import { getSelectedSiteSlug } from 'calypso/state/ui/selectors';
 import PurchasesNavigation from 'calypso/my-sites/purchases/navigation';
 import SiteLevelPurchasesErrorBoundary from 'calypso/my-sites/purchases/site-level-purchases-error-boundary';
@@ -63,11 +64,11 @@ export function Purchases(): JSX.Element {
 	return (
 		<Main className="purchases is-wide-layout">
 			<MySitesSidebarNavigation />
-			<DocumentHead title={ translate( 'Purchases' ) } />
+			<DocumentHead title={ titles.sectionTitle } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Purchases' ) }
+				headerText={ titles.sectionTitle }
 				align="left"
 			/>
 			<PurchasesNavigation sectionTitle={ 'Active Upgrades' } siteSlug={ siteSlug } />
@@ -94,11 +95,11 @@ export function PurchaseDetails( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Purchase Settings' ) } />
+			<DocumentHead title={ titles.managePurchase } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Purchases' ) }
+				headerText={ titles.sectionTitle }
 				align="left"
 			/>
 			<PageViewTracker
@@ -111,7 +112,7 @@ export function PurchaseDetails( {
 				onError={ logPurchasesError }
 			>
 				<ManagePurchase
-					cardTitle={ translate( 'Purchase Settings' ) }
+					cardTitle={ titles.managePurchase }
 					purchaseId={ purchaseId }
 					siteSlug={ siteSlug }
 					showHeader={ false }
@@ -139,11 +140,11 @@ export function PurchaseCancel( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Cancel purchase' ) } />
+			<DocumentHead title={ titles.cancelPurchase } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Purchases' ) }
+				headerText={ titles.sectionTitle }
 				align="left"
 			/>
 
@@ -177,11 +178,11 @@ export function PurchaseAddPaymentMethod( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Add Credit Card' ) } />
+			<DocumentHead title={ titles.addCreditCard } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Purchases' ) }
+				headerText={ titles.sectionTitle }
 				align="left"
 			/>
 
@@ -217,11 +218,11 @@ export function PurchaseChangePaymentMethod( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Change Credit Card' ) } />
+			<DocumentHead title={ titles.editCardDetails } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Purchases' ) }
+				headerText={ titles.sectionTitle }
 				align="left"
 			/>
 
@@ -254,11 +255,11 @@ export function PurchaseCancelDomain( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Cancel domain' ) } />
+			<DocumentHead title={ titles.confirmCancelDomain } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Purchases' ) }
+				headerText={ titles.sectionTitle }
 				align="left"
 			/>
 
