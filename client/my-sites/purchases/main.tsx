@@ -51,11 +51,11 @@ function useLogPurchasesError( message: string ) {
 				} )
 			);
 		},
-		[ reduxDispatch ]
+		[ reduxDispatch, message ]
 	);
 }
 
-export function Purchases() {
+export function Purchases(): JSX.Element {
 	const translate = useTranslate();
 	const siteSlug = useSelector( getSelectedSiteSlug );
 	const logPurchasesError = useLogPurchasesError( 'site level purchases load error' );
@@ -63,14 +63,14 @@ export function Purchases() {
 	return (
 		<Main className="purchases is-wide-layout">
 			<MySitesSidebarNavigation />
-			<DocumentHead title={ translate( 'Billing' ) } />
+			<DocumentHead title={ translate( 'Purchases' ) } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Billing' ) }
+				headerText={ translate( 'Purchases' ) }
 				align="left"
 			/>
-			<PurchasesNavigation sectionTitle={ 'Purchases' } siteSlug={ siteSlug } />
+			<PurchasesNavigation sectionTitle={ 'Active Upgrades' } siteSlug={ siteSlug } />
 
 			<SiteLevelPurchasesErrorBoundary
 				errorMessage={ translate( 'Sorry, there was an error loading this page.' ) }
@@ -94,11 +94,11 @@ export function PurchaseDetails( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Billing' ) } />
+			<DocumentHead title={ translate( 'Purchase Settings' ) } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Billing' ) }
+				headerText={ translate( 'Purchases' ) }
 				align="left"
 			/>
 			<PageViewTracker
@@ -133,7 +133,7 @@ export function PurchaseCancel( {
 }: {
 	purchaseId: number;
 	siteSlug: string;
-} ) {
+} ): JSX.Element {
 	const translate = useTranslate();
 	const logPurchasesError = useLogPurchasesError( 'site level purchase cancel load error' );
 
@@ -143,7 +143,7 @@ export function PurchaseCancel( {
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Billing' ) }
+				headerText={ translate( 'Purchases' ) }
 				align="left"
 			/>
 
@@ -169,7 +169,7 @@ export function PurchaseAddPaymentMethod( {
 }: {
 	purchaseId: number;
 	siteSlug: string;
-} ) {
+} ): JSX.Element {
 	const translate = useTranslate();
 	const logPurchasesError = useLogPurchasesError(
 		'site level purchase add payment method load error'
@@ -177,11 +177,11 @@ export function PurchaseAddPaymentMethod( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Billing' ) } />
+			<DocumentHead title={ translate( 'Add Credit Card' ) } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Billing' ) }
+				headerText={ translate( 'Purchases' ) }
 				align="left"
 			/>
 
@@ -209,7 +209,7 @@ export function PurchaseChangePaymentMethod( {
 	purchaseId: number;
 	siteSlug: string;
 	cardId: string;
-} ) {
+} ): JSX.Element {
 	const translate = useTranslate();
 	const logPurchasesError = useLogPurchasesError(
 		'site level purchase edit payment method load error'
@@ -217,11 +217,11 @@ export function PurchaseChangePaymentMethod( {
 
 	return (
 		<Main className="purchases is-wide-layout">
-			<DocumentHead title={ translate( 'Billing' ) } />
+			<DocumentHead title={ translate( 'Change Credit Card' ) } />
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Billing' ) }
+				headerText={ translate( 'Purchases' ) }
 				align="left"
 			/>
 
@@ -248,7 +248,7 @@ export function PurchaseCancelDomain( {
 }: {
 	purchaseId: number;
 	siteSlug: string;
-} ) {
+} ): JSX.Element {
 	const translate = useTranslate();
 	const logPurchasesError = useLogPurchasesError( 'site level purchase cancel domain load error' );
 
@@ -258,7 +258,7 @@ export function PurchaseCancelDomain( {
 			<FormattedHeader
 				brandFont
 				className="purchases__page-heading"
-				headerText={ translate( 'Billing' ) }
+				headerText={ translate( 'Purchases' ) }
 				align="left"
 			/>
 
