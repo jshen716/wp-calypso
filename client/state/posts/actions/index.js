@@ -12,5 +12,4 @@ export { saveEdited } from 'calypso/state/posts/actions/save-edited';
 export { savePost } from 'calypso/state/posts/actions/save-post';
 export { savePostSuccess } from 'calypso/state/posts/actions/save-post-success';
 export { trashPost } from 'calypso/state/posts/actions/trash-post';
-export { updatePostMetadata } from 'calypso/state/posts/actions/update-post-metadata';
 export { requestPostGeoImageUrl } from 'calypso/state/posts/geo/actions';
