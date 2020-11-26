@@ -210,8 +210,8 @@ export class UpsellNudge extends React.Component {
 
 	isEligibleForOneClickUpsell = ( buttonAction ) => {
 		const { cards, siteSlug, upsellType } = this.props;
-
-		if ( 'accept' !== buttonAction || 'concierge-quickstart-session' !== upsellType ) {
+		const supportedUpsellTypes = [ 'concierge-quickstart-session', 'plan-upgrade-upsell' ];
+		if ( 'accept' !== buttonAction || ! supportedUpsellTypes.includes( upsellType ) ) {
 			return false;
 		}
 
