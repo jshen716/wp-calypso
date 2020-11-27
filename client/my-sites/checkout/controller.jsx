@@ -17,7 +17,11 @@ import CheckoutContainer from './checkout/checkout-container';
 import CheckoutSystemDecider from './checkout-system-decider';
 import CheckoutPendingComponent from './checkout-thank-you/pending';
 import CheckoutThankYouComponent from './checkout-thank-you';
-import UpsellNudge from './upsell-nudge';
+import UpsellNudge, {
+	PLAN_UPGRADE_UPSELL,
+	CONCIERGE_SUPPORT_SESSION,
+	CONCIERGE_QUICKSTART_SESSION,
+} from './upsell-nudge';
 import { canUserPurchaseGSuite } from 'calypso/lib/gsuite';
 import { getRememberedCoupon } from 'calypso/lib/cart/actions';
 import { setSectionMiddleware } from 'calypso/controller';
@@ -193,13 +197,13 @@ export function upsellNudge( context, next ) {
 	let upgradeItem;
 
 	if ( context.path.includes( 'offer-quickstart-session' ) ) {
-		upsellType = 'concierge-quickstart-session';
+		upsellType = CONCIERGE_QUICKSTART_SESSION;
 		upgradeItem = 'concierge-session';
 	} else if ( context.path.match( /(add|offer)-support-session/ ) ) {
-		upsellType = 'concierge-support-session';
+		upsellType = CONCIERGE_SUPPORT_SESSION;
 		upgradeItem = 'concierge-session';
 	} else if ( context.path.includes( 'offer-plan-upgrade' ) ) {
-		upsellType = 'plan-upgrade-upsell';
+		upsellType = PLAN_UPGRADE_UPSELL;
 		upgradeItem = context.params.upgradeItem;
 	}
 
