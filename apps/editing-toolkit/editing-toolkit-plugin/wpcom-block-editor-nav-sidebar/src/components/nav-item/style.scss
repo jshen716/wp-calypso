@@ -27,7 +27,7 @@
 	}
 
 	&.is-selected {
-		background: $dark-gray-600;
+		background: $gray-700;
 
 		.wpcom-block-editor-nav-item__label {
 			background: $gray-700;
@@ -43,7 +43,7 @@
 
 	&.is-untitled {
 		font-style: italic;
-		color: $light-gray-800;
+		color: $gray-600;
 	}
 }
 
