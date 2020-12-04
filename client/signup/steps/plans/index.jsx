@@ -153,7 +153,7 @@ export class PlansStep extends Component {
 				<PlansFeaturesMain
 					site={ selectedSite || {} } // `PlanFeaturesMain` expects a default prop of `{}` if no site is provided
 					hideFreePlan={ hideFreePlan }
-					isInSignup={ true }
+					isInSignup
 					isLaunchPage={ isLaunchPage }
 					intervalType={ this.getIntervalType() }
 					onUpgradeClick={ this.onSelectPlan }
@@ -162,7 +162,7 @@ export class PlansStep extends Component {
 					domainName={ this.getDomainName() }
 					customerType={ this.getCustomerType() }
 					disableBloggerPlanWithNonBlogDomain={ disableBloggerPlanWithNonBlogDomain }
-					plansWithScroll={ true }
+					plansWithScroll
 					planTypes={ planTypes }
 					flowName={ flowName }
 					customHeader={ this.getGutenboardingHeader() }
@@ -178,7 +178,7 @@ export class PlansStep extends Component {
 		if ( isMonthlyPricingTest && ! hideFreePlan ) {
 			return translate( 'Choose a plan or {{link}}start with a free site{{/link}}.', {
 				components: {
-					link: <Button onClick={ this.handleFreePlanButtonClick } borderless={ true } />,
+					link: <Button onClick={ this.handleFreePlanButtonClick } borderless />,
 				},
 			} );
 		}
@@ -217,7 +217,7 @@ export class PlansStep extends Component {
 				fallbackHeaderText={ fallbackHeaderText }
 				subHeaderText={ subHeaderText }
 				fallbackSubHeaderText={ fallbackSubHeaderText }
-				isWideLayout={ true }
+				isWideLayout
 				stepContent={ this.plansFeaturesList() }
 				allowBackFirstStep={ !! hasInitializedSitesBackUrl }
 				backUrl={ backUrl }

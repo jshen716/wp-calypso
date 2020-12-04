@@ -113,7 +113,7 @@ export default function WPCheckoutOrderSummary( {
 					</span>
 				</CheckoutSummaryTotal>
 			</CheckoutSummaryAmountWrapper>
-			{ isMonthlyPricingTest && <CheckoutSummaryHelp isMonthlyPricingTest={ true } /> }
+			{ isMonthlyPricingTest && <CheckoutSummaryHelp isMonthlyPricingTest /> }
 		</CheckoutSummaryCard>
 	);
 }

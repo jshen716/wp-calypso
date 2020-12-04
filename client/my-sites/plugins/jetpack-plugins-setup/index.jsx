@@ -265,7 +265,7 @@ class PlansSetup extends React.Component {
 							{ hidden ? (
 								<Notice
 									key={ 0 }
-									isCompact={ true }
+									isCompact
 									showDismiss={ false }
 									icon="plugins"
 									text={ this.props.translate( 'Waiting to install' ) }
@@ -326,7 +326,7 @@ class PlansSetup extends React.Component {
 			return (
 				<Notice
 					showDismiss={ false }
-					isCompact={ true }
+					isCompact
 					status="is-info"
 					text={ translate( 'This plugin is already registered with another plan.' ) }
 				>

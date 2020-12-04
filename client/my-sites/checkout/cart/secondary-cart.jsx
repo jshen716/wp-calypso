@@ -83,7 +83,7 @@ class SecondaryCart extends Component {
 						ref={ this.cartBodyRef }
 						cart={ cart }
 						selectedSite={ selectedSite }
-						showCoupon={ true }
+						showCoupon
 					/>
 					<CartPlanDiscountAd cart={ cart } selectedSite={ selectedSite } />
 

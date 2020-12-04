@@ -51,7 +51,7 @@ export const QuickStartVideo = ( { trackQuickStartImpression } ) => {
 										'https://wordpress.com/support/getting-started-with-wordpress-com/#video-getting-started-with-word-press-com'
 									) }
 									showIcon={ false }
-									showText={ true }
+									showText
 									tracksEvent="calypso_customer_home_education"
 									statsGroup="calypso_customer_home"
 									tracksOptions={ {
@@ -75,7 +75,7 @@ export const QuickStartVideo = ( { trackQuickStartImpression } ) => {
 									'https://wordpress.com/support/getting-started-with-wordpress-com/#video-getting-started-with-word-press-com'
 								) }
 								showIcon={ false }
-								showText={ true }
+								showText
 								tracksEvent="calypso_customer_home_education"
 								statsGroup="calypso_customer_home"
 								tracksOptions={ {

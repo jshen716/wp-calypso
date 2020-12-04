@@ -139,7 +139,7 @@ class BackupDatePicker extends Component {
 					{ isEnabled( 'jetpack/backups-date-picker' ) && (
 						<DateRangeSelector
 							siteId={ siteId }
-							enabled={ true }
+							enabled
 							customLabel={ <Gridicon icon="calendar" /> }
 						/>
 					) }

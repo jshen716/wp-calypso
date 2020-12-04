@@ -34,7 +34,7 @@ export function PendingPaymentBlocker( { translate } ) {
 				<div className="checkout__payment-box-actions">
 					<div className="checkout__payment-buttons  payment-box__payment-buttons">
 						<div className="checkout__payment-button pay-button">
-							<Button primary={ true } href="/me/purchases/pending">
+							<Button primary href="/me/purchases/pending">
 								<span>{ translate( 'View Payment' ) }</span>
 							</Button>
 						</div>

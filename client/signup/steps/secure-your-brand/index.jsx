@@ -190,7 +190,7 @@ export class SecureYourBrandStep extends Component {
 					fallbackHeaderText={ headerText }
 					subHeaderText={ subHeaderText }
 					fallbackSubHeaderText={ subHeaderText }
-					isWideLayout={ true }
+					isWideLayout
 					stepContent={ this.recommendedDomains() }
 				/>
 			</div>

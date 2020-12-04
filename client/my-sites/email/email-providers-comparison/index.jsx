@@ -182,7 +182,7 @@ class EmailProvidersComparison extends React.Component {
 					comment: '{{price/}} is the formatted price, e.g. $20',
 				} ) }
 				buttonLabel={ translate( 'Add Titan Mail' ) }
-				hasPrimaryButton={ true }
+				hasPrimaryButton
 				isButtonBusy={ this.state.isFetchingProvisioningURL }
 				onButtonClick={ this.onAddTitanClick }
 				className={ className }

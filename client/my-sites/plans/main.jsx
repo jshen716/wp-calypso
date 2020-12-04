@@ -90,7 +90,7 @@ class Plans extends React.Component {
 		return (
 			<div>
 				<DocumentHead title={ this.props.translate( 'Plans', { textOnly: true } ) } />
-				<Main wideLayout={ true }>
+				<Main wideLayout>
 					<SidebarNavigation />
 
 					<div id="plans" className="plans plans__has-sidebar" />
@@ -121,7 +121,7 @@ class Plans extends React.Component {
 				<PageViewTracker path="/plans/:site" title="Plans" />
 				<QueryContactDetailsCache />
 				<TrackComponentView eventName="calypso_plans_view" />
-				<Main wideLayout={ true }>
+				<Main wideLayout>
 					<SidebarNavigation />
 					{ ! canAccessPlans && (
 						<EmptyContent
@@ -145,7 +145,7 @@ class Plans extends React.Component {
 								) : (
 									<PlansFeaturesMain
 										displayJetpackPlans={ displayJetpackPlans }
-										hideFreePlan={ true }
+										hideFreePlan
 										customerType={ customerType }
 										isMonthlyPricingTest={ hasWpcomMonthlyPlan }
 										intervalType={ this.props.intervalType }

@@ -39,7 +39,7 @@ export function PurchaseModal( { cart, cards, isCartUpdating, onComplete, onClos
 	};
 
 	return (
-		<Dialog isVisible={ true } baseClassName="purchase-modal dialog" onClose={ onClose }>
+		<Dialog isVisible baseClassName="purchase-modal dialog" onClose={ onClose }>
 			{ isCartUpdating ? <Placeholder /> : <Content { ...contentProps } /> }
 		</Dialog>
 	);
