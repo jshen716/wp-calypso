@@ -138,7 +138,6 @@ export default function CompositeCheckout( {
 	const isPrivate = useSelector( ( state ) => siteId && isPrivateSite( state, siteId ) ) || false;
 	const { stripe, stripeConfiguration, isStripeLoading, stripeLoadingError } = useStripe();
 	const createUserAndSiteBeforeTransaction = Boolean( isLoggedOutCart || isNoSiteCart );
-	const transactionOptions = { createUserAndSiteBeforeTransaction };
 	const reduxDispatch = useDispatch();
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const recordEvent: ( action: ReactStandardAction ) => void = useCallback(
@@ -415,21 +414,24 @@ export default function CompositeCheckout( {
 	const contactDetailsType = getContactDetailsType( responseCart );
 	const includeDomainDetails = contactDetailsType === 'domain';
 	const includeGSuiteDetails = contactDetailsType === 'gsuite';
+	const transactionOptions = { createUserAndSiteBeforeTransaction };
 	const dataForProcessor = useMemo(
 		() => ( {
 			includeDomainDetails,
 			includeGSuiteDetails,
 			recordEvent,
+			createUserAndSiteBeforeTransaction,
 		} ),
-		[ includeDomainDetails, includeGSuiteDetails, recordEvent ]
+		[ includeDomainDetails, includeGSuiteDetails, recordEvent, createUserAndSiteBeforeTransaction ]
 	);
 	const dataForRedirectProcessor = useMemo(
 		() => ( {
 			...dataForProcessor,
 			getThankYouUrl,
 			siteSlug,
+			createUserAndSiteBeforeTransaction,
 		} ),
-		[ dataForProcessor, getThankYouUrl, siteSlug ]
+		[ dataForProcessor, getThankYouUrl, siteSlug, createUserAndSiteBeforeTransaction ]
 	);
 
 	const paymentProcessors = useMemo(
@@ -465,7 +467,7 @@ export default function CompositeCheckout( {
 			'full-credits': ( transactionData: unknown ) =>
 				fullCreditsProcessor( transactionData, dataForProcessor, transactionOptions ),
 			'existing-card': ( transactionData: unknown ) =>
-				existingCardProcessor( transactionData, dataForProcessor, transactionOptions ),
+				existingCardProcessor( transactionData, dataForProcessor ),
 			paypal: ( transactionData: unknown ) =>
 				payPalProcessor(
 					transactionData,
