@@ -282,7 +282,7 @@ function useCreateApplePay( {
 	return applePayMethod;
 }
 
-export function useCreateExistingCards( { storedCards, stripeConfiguration } ) {
+export function useCreateExistingCards( { storedCards } ) {
 	const existingCardMethods = useMemo( () => {
 		return storedCards.map( ( storedDetails ) =>
 			createExistingCardMethod( {
@@ -294,10 +294,9 @@ export function useCreateExistingCards( { storedCards, stripeConfiguration } ) {
 				storedDetailsId: storedDetails.stored_details_id,
 				paymentMethodToken: storedDetails.mp_ref,
 				paymentPartnerProcessorId: storedDetails.payment_partner,
-				stripeConfiguration,
 			} )
 		);
-	}, [ stripeConfiguration, storedCards ] );
+	}, [ storedCards ] );
 	return existingCardMethods;
 }
 
