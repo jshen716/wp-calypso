@@ -492,7 +492,7 @@ export default function CompositeCheckout( {
 						country: countryCode,
 						postalCode,
 						subdivisionCode,
-						siteId: siteId ? String( siteId ) : '',
+						siteId: siteId ? String( siteId ) : undefined,
 						domainDetails,
 					} ),
 					dataForProcessor
