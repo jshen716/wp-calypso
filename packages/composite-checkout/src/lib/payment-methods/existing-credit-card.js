@@ -119,7 +119,6 @@ function ExistingCardPayButton( {
 				onEvent( { type: 'EXISTING_CARD_TRANSACTION_BEGIN' } );
 				onClick( 'existing-card', {
 					items,
-					total,
 					name: cardholderName,
 					storedDetailsId,
 					paymentMethodToken,
