@@ -3,13 +3,13 @@
 exports[`TemplateSelectorControl Basic rendering renders with required props 1`] = `
 <div>
   <div
-    class="components-base-control template-selector-control"
+    class="components-base-control template-selector-control css-wdf2ti-Wrapper e1puf3u0"
   >
     <div
-      class="components-base-control__field"
+      class="components-base-control__field css-11vcxb9-StyledField e1puf3u1"
     >
       <label
-        class="components-base-control__label"
+        class="components-base-control__label css-pezhm9-StyledLabel e1puf3u2"
         for="template-selector-control-17"
       >
         Select a Template...
