@@ -70,6 +70,7 @@ jest.mock( 'state', () => ( {
 
 jest.mock( 'state/redux-store', () => ( {
 	setStore: jest.fn(),
+	registerReducer: jest.fn(),
 } ) );
 
 jest.mock( 'state/reducer', () => jest.fn() );

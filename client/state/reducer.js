@@ -16,7 +16,6 @@ import { reducer as httpData } from 'calypso/state/data-layer/http-data';
  */
 import currentUser from './current-user/reducer';
 import { reducer as dataRequests } from './data-layer/wpcom-http/utils';
-import documentHead from './document-head/reducer';
 import i18n from './i18n/reducer';
 import importerNux from './importer-nux/reducer';
 import mySites from './my-sites/reducer';
@@ -31,7 +30,6 @@ import users from './users/reducer';
 const reducers = {
 	currentUser,
 	dataRequests,
-	documentHead,
 	httpData,
 	i18n,
 	importerNux,
