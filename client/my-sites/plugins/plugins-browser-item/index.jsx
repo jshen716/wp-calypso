@@ -17,6 +17,7 @@ import Rating from 'calypso/components/rating';
 import { recordTracksEvent } from 'calypso/lib/analytics/tracks';
 import { getSelectedSiteId } from 'calypso/state/ui/selectors';
 import { isJetpackSite } from 'calypso/state/sites/selectors';
+import { withLocalizedMoment } from 'calypso/components/localized-moment';
 
 /**
  * Style dependencies
@@ -110,13 +111,48 @@ class PluginsBrowserListElement extends Component {
 					</div>
 					<div className="plugins-browser-item__meta is-placeholder">
 						<div className="plugins-browser-item__ratings">
-							<Rating rating="0" size="16" />
+							<Rating rating={ 0 } size={ 16 } />
 						</div>
 					</div>
 				</span>
 			</Card>
 		);
 		/* eslint-enable wpcalypso/jsx-classname-namespace */
+	}
+
+	renderLastUpdated = () => {
+		const { plugin, moment } = this.props;
+
+		if ( plugin && plugin.last_updated ) {
+			const dateFromNow = moment.utc( plugin.last_updated, 'YYYY-MM-DD hh:mma' ).fromNow();
+
+			return (
+				<div className="plugins-browser-item__last-updated">
+					{ this.props.translate( 'Updated %(dateFromNow)s', { args: { dateFromNow } } ) }
+				</div>
+			);
+		}
+	};
+
+	renderDownloaded() {
+		let downloaded = this.props.plugin.downloaded;
+		if ( downloaded > 1000000 ) {
+			downloaded = this.props.numberFormat( Math.floor( downloaded / 100000 ) * 100000 ) + '+';
+		} else if ( downloaded > 100000 ) {
+			downloaded = this.props.numberFormat( Math.floor( downloaded / 10000 ) * 10000 ) + '+';
+		} else if ( downloaded > 0 ) {
+			downloaded = this.props.numberFormat( downloaded );
+		} else {
+			return;
+		}
+
+		return (
+			<div className="plugins-browser-item__downloads">
+				{ this.props.translate( '%(installs)s installs', {
+					args: { installs: downloaded },
+				} ) }
+			</div>
+		);
 	}
 
 	render() {
@@ -148,7 +184,6 @@ class PluginsBrowserListElement extends Component {
 							image={ this.props.plugin.icon }
 							isPlaceholder={ this.props.isPlaceholder }
 						/>
-						{ this.renderInstalledIn() }
 					</div>
 					<div className="plugins-browser-item__meta">
 						<div className="plugins-browser-item__ratings">
@@ -160,20 +195,9 @@ class PluginsBrowserListElement extends Component {
 							) }
 						</div>
 						<div className="plugins-browser-item__secondary-meta">
-							{ this.props.plugin.downloaded > 0 && (
-								<div className="plugins-browser-item__downloads">
-									{ this.props.translate( '%(number)s active installs', {
-										args: { number: this.props.plugin.downloaded },
-									} ) }
-								</div>
-							) }
-							{ this.props.plugin.last_updated && (
-								<div className="plugins-browser-item__updated">
-									{ this.props.translate( 'Last updated: %(updated)s', {
-										args: { updated: this.props.plugin.last_updated },
-									} ) }
-								</div>
-							) }
+							{ this.renderDownloaded() }
+							{ this.renderLastUpdated() }
+							{ this.renderInstalledIn() }
 						</div>
 					</div>
 				</a>
@@ -191,5 +215,6 @@ export default compose(
 			isJetpackSite: isJetpackSite( state, selectedSiteId ),
 		};
 	} ),
+	withLocalizedMoment,
 	localize
 )( PluginsBrowserListElement );
