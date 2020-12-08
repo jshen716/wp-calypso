@@ -279,7 +279,7 @@ export class UpsellNudge extends React.Component {
 	};
 
 	getCartUpdatedTime = () => {
-		return this.props.cart?.client_metadata?.last_server_response_date;
+		return this.props.cart.cart_generated_at_timestamp;
 	};
 }
 
