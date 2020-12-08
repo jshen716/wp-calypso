@@ -69,7 +69,7 @@
 		"gdpr-banner": false,
 		"google-my-business": true,
 		"google-drive": true,
-		"google-workspace-product-rename": true,
+		"google-workspace-migration": true,
 		"gutenboarding/alpha-templates": true,
 		"gutenboarding/feature-picker": true,
 		"gutenboarding/new-launch-mobile": true,
