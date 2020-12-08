@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import page from 'page';
 import { omit } from 'lodash';
+import { withShoppingCart } from '@automattic/shopping-cart';
 
 /**
  * Internal dependencies
@@ -324,4 +325,4 @@ export default connect(
 	{
 		trackUpsellButtonClick,
 	}
-)( localize( UpsellNudge ) );
+)( withShoppingCart( localize( UpsellNudge ) ) );
