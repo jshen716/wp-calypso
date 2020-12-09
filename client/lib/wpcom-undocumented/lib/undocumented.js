@@ -1821,10 +1821,10 @@ Undocumented.prototype.isSiteImportable = function ( site_url ) {
 	);
 };
 
-Undocumented.prototype.fetchImporterState = function ( siteId ) {
+Undocumented.prototype.fetchImporterState = function ( siteId, fn ) {
 	debug( `/sites/${ siteId }/importer/` );
 
-	return this.wpcom.req.get( { path: `/sites/${ siteId }/imports/` } );
+	return this.wpcom.req.get( { path: `/sites/${ siteId }/imports/` }, fn );
 };
 
 Undocumented.prototype.updateImporter = function ( siteId, importerStatus ) {
