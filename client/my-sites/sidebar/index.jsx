@@ -991,7 +991,6 @@ export class MySitesSidebar extends Component {
 						materialIcon="settings"
 					>
 						{ this.hosting() }
-						{ this.domains() }
 						{ this.users() }
 						{ this.siteSettings() }
 					</ExpandableSidebarMenu>
