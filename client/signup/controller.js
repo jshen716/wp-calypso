@@ -63,13 +63,17 @@ const removeWhiteBackground = function () {
 	document.body.classList.remove( 'is-white-signup' );
 };
 
-const gutenbergRedirect = function ( flowName ) {
+const gutenbergRedirect = function ( flowName, locale ) {
 	const url = new URL( window.location );
-	if ( [ 'beginner', 'personal', 'premium', 'business', 'ecommerce' ].includes( flowName ) ) {
-		url.pathname = `/new/${ flowName }`;
-	} else {
-		url.pathname = '/new';
+	let path = '/new';
+	if ( [ 'free', 'personal', 'premium', 'business', 'ecommerce' ].includes( flowName ) ) {
+		path += `/${ flowName }`;
 	}
+	if ( locale ) {
+		path += `/${ locale }`;
+	}
+
+	url.pathname = path;
 	window.location.replace( url.toString() );
 };
 
@@ -122,7 +126,7 @@ export default {
 			next();
 		} else {
 			const state = context.store.getState();
-			const locale = getCurrentUserLocale( state );
+			const userLocale = getCurrentUserLocale( state );
 			const flowName = getFlowName( context.params );
 			const userLoggedIn = isUserLoggedIn( state );
 
@@ -135,9 +139,9 @@ export default {
 
 				if (
 					existingUsersOnboardingVariant === 'treatment' ||
-					[ 'en', 'en-gb' ].includes( locale )
+					[ 'en', 'en-gb' ].includes( userLocale )
 				) {
-					gutenbergRedirect( context.params.flowName );
+					gutenbergRedirect();
 					return;
 				}
 			}
@@ -145,6 +149,25 @@ export default {
 			waitForHttpData( () => ( { geo: requestGeoLocation() } ) )
 				.then( ( { geo } ) => {
 					const countryCode = geo.data;
+					const localeFromParams = context.params.lang;
+
+					if (
+						( countryCode !== 'US' || ( localeFromParams && localeFromParams !== 'en' ) ) &&
+						! userLoggedIn &&
+						flowName === 'free'
+					) {
+						// Assign to the experiment only non EN-US, logged-in users, creating a site using 'free' flow.
+						const newUsersFreePlanOnboardingVariant = getVariationForUser(
+							state,
+							'new_onboarding_free_plan_users_v2'
+						);
+
+						if ( newUsersFreePlanOnboardingVariant === 'treatment' ) {
+							gutenbergRedirect( flowName, localeFromParams );
+							return;
+						}
+					}
+
 					if (
 						( ! user() || ! user().get() ) &&
 						-1 === context.pathname.indexOf( 'free' ) &&
@@ -158,7 +181,6 @@ export default {
 						removeWhiteBackground();
 						const stepName = getStepName( context.params );
 						const stepSectionName = getStepSectionName( context.params );
-						const localeFromParams = context.params.lang;
 						const urlWithLocale = getStepUrl(
 							'onboarding-registrationless',
 							stepName,
