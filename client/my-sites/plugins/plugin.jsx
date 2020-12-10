@@ -293,7 +293,7 @@ const SinglePlugin = createReactClass( {
 	},
 
 	render() {
-		const { pluginSlug, selectedSite } = this.props;
+		const { selectedSite } = this.props;
 		if ( ! this.props.isRequestingSites && ! this.props.userCanManagePlugins ) {
 			return <NoPermissionsError title={ this.getPageTitle() } />;
 		}
@@ -323,7 +323,7 @@ const SinglePlugin = createReactClass( {
 				<DocumentHead title={ this.getPageTitle() } />
 				<PageViewTracker path={ analyticsPath } title="Plugins > Plugin Details" />
 				<SidebarNavigation />
-				<PluginNotices pluginSlug={ pluginSlug } />
+				<PluginNotices pluginId={ plugin.id } sites={ this.props.sites } plugins={ [ plugin ] } />
 
 				<div className="plugin__page">
 					{ this.displayHeader( calypsoify ) }
