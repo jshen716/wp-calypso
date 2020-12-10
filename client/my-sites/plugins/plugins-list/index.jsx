@@ -443,6 +443,19 @@ export const PluginsList = createReactClass( {
 		}
 	},
 
+	getPluginsSites() {
+		const { plugins } = this.props;
+		return plugins.reduce( ( sites, plugin ) => {
+			plugin.sites.map( ( pluginSite ) => {
+				if ( ! sites.find( ( site ) => site.ID === pluginSite.ID ) ) {
+					sites.push( pluginSite );
+				}
+			} );
+
+			return sites;
+		}, [] );
+	},
+
 	// Renders
 	render() {
 		const itemListClasses = classNames( 'plugins-list__elements', {
@@ -470,7 +483,7 @@ export const PluginsList = createReactClass( {
 
 		return (
 			<div className="plugins-list">
-				<PluginNotices />
+				<PluginNotices sites={ this.getPluginsSites() } plugins={ this.props.plugins } />
 				<PluginsListHeader
 					label={ this.props.header }
 					isBulkManagementActive={ this.state.bulkManagementActive }
