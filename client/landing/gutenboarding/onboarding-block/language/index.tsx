@@ -6,12 +6,12 @@ import { useHistory } from 'react-router-dom';
 import { useI18n } from '@automattic/react-i18n';
 import { ActionButtons, BackButton, Title } from '@automattic/onboarding';
 import LanguagePicker, { createLanguageGroups } from '@automattic/language-picker';
+import languages from '@automattic/languages';
 
 /**
  * Internal dependencies
  */
 import { ChangeLocaleContextConsumer } from '../../components/locale-context';
-import languages from '@automattic/languages';
 
 /**
  * Style dependencies
