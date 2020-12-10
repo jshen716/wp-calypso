@@ -94,6 +94,7 @@ export interface CheckoutProviderProps {
 	redirectToUrl?: ( url: string ) => void;
 	paymentProcessors: PaymentProcessorProp;
 	isValidating?: boolean;
+	children: React.ReactNode;
 }
 
 export interface PaymentProcessorProp {
