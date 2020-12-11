@@ -7,8 +7,8 @@ export { getLoginUrlWithTOSRedirect } from './get-login-url-with-tos-redirect';
 export { getMonthlyPrice } from './get-monthly-price';
 export {
 	isGSuiteExtraLicenseProductSlug,
-	isGSuiteOrExtraLicenseProductSlug,
-	isGSuiteProductSlug,
+	isGSuiteOrExtraLicenseOrGoogleWorkspaceProductSlug,
+	isGSuiteOrGoogleWorkspaceProductSlug,
 } from './gsuite-product-slug';
 export { getGSuiteSupportedDomains, hasGSuiteSupportedDomain } from './gsuite-supported-domain';
 export { hasGSuiteWithAnotherProvider } from './has-gsuite-with-another-provider';

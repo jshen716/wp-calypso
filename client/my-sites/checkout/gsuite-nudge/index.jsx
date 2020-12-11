@@ -12,7 +12,7 @@ import page from 'page';
  * Internal dependencies
  */
 import DocumentHead from 'calypso/components/data/document-head';
-import { GSUITE_BASIC_SLUG } from 'calypso/lib/gsuite/constants';
+import { GOOGLE_WORKSPACE_BUSINESS_STARTER_YEARLY } from 'calypso/lib/gsuite/constants';
 import GSuiteUpsellCard from 'calypso/components/upgrades/gsuite/gsuite-upsell-card';
 import Main from 'calypso/components/main';
 import QuerySites from 'calypso/components/data/query-sites';
@@ -82,7 +82,7 @@ export class GSuiteNudge extends React.Component {
 				<QuerySites siteId={ selectedSiteId } />
 				<GSuiteUpsellCard
 					domain={ this.props.domain }
-					productSlug={ GSUITE_BASIC_SLUG }
+					productSlug={ GOOGLE_WORKSPACE_BUSINESS_STARTER_YEARLY }
 					onSkipClick={ this.handleSkipClick }
 					onAddEmailClick={ this.handleAddEmailClick }
 				/>

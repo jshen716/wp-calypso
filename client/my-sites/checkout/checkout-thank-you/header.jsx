@@ -180,7 +180,7 @@ export class CheckoutThankYouHeader extends PureComponent {
 			);
 		}
 
-		if ( isGSuiteProductSlug( primaryPurchase.productSlug ) ) {
+		if ( isGSuiteOrGoogleWorkspaceProductSlug( primaryPurchase.productSlug ) ) {
 			return preventWidows(
 				translate(
 					'Your domain {{strong}}%(domainName)s{{/strong}} will be using G Suite very soon.',

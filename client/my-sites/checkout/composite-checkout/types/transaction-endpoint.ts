@@ -11,7 +11,7 @@ import { getNonProductWPCOMCartItemTypes } from 'calypso/my-sites/checkout/compo
 import type { WPCOMCartItem } from './checkout-cart';
 import type { Purchase } from './wpcom-store-state';
 import type { DomainContactDetails } from './backend/domain-contact-details-components';
-import { isGSuiteProductSlug } from 'calypso/lib/gsuite';
+import { isGSuiteOrGoogleWorkspaceProductSlug } from 'calypso/lib/gsuite';
 
 const debug = debugFactory( 'calypso:composite-checkout:transaction-endpoint' );
 
@@ -145,9 +145,10 @@ function addRegistrationDataToGSuiteItem(
 	item: WPCOMCartItem,
 	contactDetails: DomainContactDetails | null
 ): WPCOMCartItem {
-	if ( ! isGSuiteProductSlug( item.wpcom_meta?.product_slug ) ) {
+	if ( ! isGSuiteOrGoogleWorkspaceProductSlug( item.wpcom_meta?.product_slug ) ) {
 		return item;
 	}
+
 	return {
 		...item,
 		wpcom_meta: {
