@@ -9,7 +9,6 @@ import {
 	Button,
 	FormStatus,
 	useLineItems,
-	useEvents,
 	useFormStatus,
 	useSelect,
 } from '@automattic/composite-checkout';
@@ -35,7 +34,6 @@ export default function CreditCardPayButton( {
 	const fields = useSelect( ( select ) => select( 'credit-card' ).getFields() );
 	const cardholderName = fields.cardholderName;
 	const { formStatus } = useFormStatus();
-	const onEvent = useEvents();
 
 	const { responseCart: cart } = useShoppingCart();
 	const contactCountryCode = useSelect(
@@ -53,7 +51,6 @@ export default function CreditCardPayButton( {
 				if ( isCreditCardFormValid( store, paymentPartner, __ ) ) {
 					if ( paymentPartner === 'stripe' ) {
 						debug( 'submitting stripe payment' );
-						onEvent( { type: 'STRIPE_TRANSACTION_BEGIN' } );
 						onClick( 'card', {
 							stripe,
 							name: cardholderName?.value,
@@ -66,7 +63,6 @@ export default function CreditCardPayButton( {
 					}
 					if ( paymentPartner === 'ebanx' ) {
 						debug( 'submitting ebanx payment' );
-						onEvent( { type: 'EBANX_TRANSACTION_BEGIN' } );
 						onClick( 'card', {
 							name: cardholderName?.value || '',
 							countryCode: fields?.countryCode?.value || '',
