@@ -53,6 +53,7 @@ import {
 	isUnlimitedThemes,
 	isVideoPress,
 	isConciergeSession,
+	isTrafficGuide,
 	isMonthly,
 } from 'calypso/lib/products-values';
 import sortProducts from 'calypso/lib/products-values/sort';
@@ -544,6 +545,16 @@ export function hasOnlyRenewalItems( cart ) {
  */
 export function hasConciergeSession( cart ) {
 	return some( getAllCartItems( cart ), isConciergeSession );
+}
+
+/**
+ * Determines whether there is a traffic guide item in the specified shopping cart.
+ *
+ * @param {CartValue} cart - cart as `CartValue` object
+ * @returns {boolean} true if there is a traffic guide item, false otherwise
+ */
+export function hasTrafficGuide( cart ) {
+	return some( getAllCartItems( cart ), isTrafficGuide );
 }
 
 /**
