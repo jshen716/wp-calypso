@@ -33,11 +33,6 @@
     loose-envify "^1.4.0"
     react-lifecycles-compat "^3.0.4"
 
-"@automattic/webpack-inline-constant-exports-plugin@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@automattic/webpack-inline-constant-exports-plugin/-/webpack-inline-constant-exports-plugin-0.0.1.tgz#a6e3625ed5e2d3c5ef26ee1da9914fcdeda1e470"
-  integrity sha512-GblKlip1VR5Hj0pg6FtKRgEzOyY1hj6DgwsSB9cSvLikyEWBbxH8o1AGGVWYtQcZEqmoxnw4Lq6NeswuxA4N7w==
-
 "@babel/cli@^7.12.1":
   version "7.12.1"
   resolved "https://registry.yarnpkg.com/@babel/cli/-/cli-7.12.1.tgz#e08a0b1cb6fcd4b9eb6a606ba5602c5c0fe24a0c"
