@@ -111,6 +111,7 @@ class ImportingPane extends React.PureComponent {
 			single_user_site: PropTypes.bool.isRequired,
 		} ).isRequired,
 		sourceType: PropTypes.string.isRequired,
+		isSignup: PropTypes.bool,
 	};
 
 	getErrorMessage = ( { description } ) => {
@@ -203,7 +204,7 @@ class ImportingPane extends React.PureComponent {
 			return null;
 		}
 
-		const { importerStatus, site } = this.props;
+		const { importerStatus, site, isSignup } = this.props;
 		const isFinished = this.isFinished();
 		const isImporting = this.isImporting();
 		const isError = this.isError();
@@ -212,7 +213,13 @@ class ImportingPane extends React.PureComponent {
 		return (
 			<ImporterActionButtonContainer>
 				{ isImporting && <BusyImportingButton /> }
-				{ isFinished && <ImporterDoneButton importerStatus={ importerStatus } site={ site } /> }
+				{ isFinished && (
+					<ImporterDoneButton
+						importerStatus={ importerStatus }
+						site={ site }
+						isSignup={ isSignup }
+					/>
+				) }
 				{ showFallbackButton && (
 					<ImporterCloseButton importerStatus={ importerStatus } site={ site } isEnabled />
 				) }

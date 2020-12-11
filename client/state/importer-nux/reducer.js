@@ -5,8 +5,6 @@ import { combineReducers } from 'calypso/state/utils';
 import {
 	IMPORTER_NUX_SITE_DETAILS_SET,
 	IMPORTS_IMPORT_CANCEL,
-	IMPORTER_NUX_FROM_SIGNUP_CLEAR,
-	IMPORTER_NUX_FROM_SIGNUP_SET,
 	IMPORTER_NUX_URL_INPUT_SET,
 } from 'calypso/state/action-types';
 
@@ -18,17 +16,6 @@ export const urlInputValue = ( state = '', action ) => {
 		}
 		case IMPORTS_IMPORT_CANCEL:
 			return '';
-	}
-
-	return state;
-};
-
-export const isFromSignupFlow = ( state = false, action ) => {
-	switch ( action.type ) {
-		case IMPORTER_NUX_FROM_SIGNUP_SET:
-			return true;
-		case IMPORTER_NUX_FROM_SIGNUP_CLEAR:
-			return false;
 	}
 
 	return state;
@@ -55,7 +42,6 @@ export const siteDetails = ( state = null, action ) => {
 };
 
 export default combineReducers( {
-	isFromSignupFlow,
 	siteDetails,
 	urlInputValue,
 } );

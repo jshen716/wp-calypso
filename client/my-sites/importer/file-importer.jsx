@@ -91,7 +91,7 @@ class FileImporter extends React.PureComponent {
 			overrideDestination,
 			uploadDescription,
 		} = this.props.importerData;
-		const { importerStatus, site } = this.props;
+		const { importerStatus, site, isSignup } = this.props;
 		const { errorData, importerState } = importerStatus;
 		const isEnabled = appStates.DISABLED !== importerState;
 		const showStart = includes( compactStates, importerState );
@@ -123,7 +123,12 @@ class FileImporter extends React.PureComponent {
 				/>
 				{ errorData && <ErrorPane type={ errorData.type } description={ errorData.description } /> }
 				{ includes( importingStates, importerState ) && (
-					<ImportingPane importerStatus={ importerStatus } sourceType={ title } site={ site } />
+					<ImportingPane
+						importerStatus={ importerStatus }
+						sourceType={ title }
+						site={ site }
+						isSignup={ isSignup }
+					/>
 				) }
 				{ includes( uploadingStates, importerState ) && (
 					<UploadingPane

@@ -37,10 +37,6 @@ import {
 	getSelectedSiteId,
 } from 'calypso/state/ui/selectors';
 import { getSiteTitle } from 'calypso/state/sites/selectors';
-import {
-	getSelectedImportEngine,
-	getImporterSiteUrl,
-} from 'calypso/state/importer-nux/temp-selectors';
 import Main from 'calypso/components/main';
 import JetpackImporter from 'calypso/my-sites/importer/jetpack-importer';
 import canCurrentUser from 'calypso/state/selectors/can-current-user';
@@ -195,7 +191,7 @@ class SectionImport extends Component {
 	 * @returns {Array} Importer react elements for the active import jobs
 	 */
 	renderActiveImporters() {
-		const { site, siteTitle, siteImports } = this.props;
+		const { isSignup, site, siteTitle, siteImports } = this.props;
 
 		return siteImports.map( ( importItem, idx ) => {
 			const importer = getImporterByKey( importItem.type );
@@ -213,6 +209,7 @@ class SectionImport extends Component {
 						fromSite={ this.props.fromSite }
 						siteTitle={ siteTitle }
 						importerStatus={ { ...importItem, site, siteTitle } }
+						isSignup={ isSignup }
 					/>
 				)
 			);
@@ -303,8 +300,6 @@ export default connect(
 	( state ) => {
 		const siteId = getSelectedSiteId( state );
 		return {
-			engine: getSelectedImportEngine( state ),
-			fromSite: getImporterSiteUrl( state ),
 			siteId,
 			site: getSelectedSite( state ),
 			siteSlug: getSelectedSiteSlug( state ),
