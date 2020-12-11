@@ -11757,7 +11757,7 @@ enhanced-resolve@4.1.0:
     memory-fs "^0.4.0"
     tapable "^1.0.0"
 
-enhanced-resolve@^4.0.0, enhanced-resolve@^4.1.0, enhanced-resolve@^4.1.1, enhanced-resolve@^4.3.0:
+enhanced-resolve@^4.0.0, enhanced-resolve@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-4.3.0.tgz#3b806f3bfafc1ec7de69551ef93cca46c1704126"
   integrity sha512-3e87LvavsdxyoCfGusJnrZ5G8SLPOFeHSNpZI/ATL9a5leXo2k0w6MKnbqhdBad9qTobSfB20Ld7UmgoNbAZkQ==
@@ -29500,36 +29500,6 @@ webpack@^4.42.0, webpack@^4.44.2, webpack@^4.8.3:
     terser-webpack-plugin "^1.4.3"
     watchpack "^1.7.4"
     webpack-sources "^1.4.1"
-
-webpack@^5.7.0:
-  version "5.7.0"
-  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.7.0.tgz#bb752a5a54aa66dfd24ff5b80256e6c609bbc4cb"
-  integrity sha512-U0AshArzQX5X+L2eViVEjrE7nNLUs80BQYcPUyRnaUMT2EyZiIbXAYWL7GLx6qRu0ykxAwXytRoC1+jqWQZExw==
-  dependencies:
-    "@types/eslint-scope" "^3.7.0"
-    "@types/estree" "^0.0.45"
-    "@webassemblyjs/ast" "1.9.0"
-    "@webassemblyjs/helper-module-context" "1.9.0"
-    "@webassemblyjs/wasm-edit" "1.9.0"
-    "@webassemblyjs/wasm-parser" "1.9.0"
-    acorn "^8.0.4"
-    browserslist "^4.14.5"
-    chrome-trace-event "^1.0.2"
-    enhanced-resolve "^5.3.1"
-    eslint-scope "^5.1.1"
-    events "^3.2.0"
-    glob-to-regexp "^0.4.1"
-    graceful-fs "^4.2.4"
-    json-parse-better-errors "^1.0.2"
-    loader-runner "^4.1.0"
-    mime-types "^2.1.27"
-    neo-async "^2.6.2"
-    pkg-dir "^4.2.0"
-    schema-utils "^3.0.0"
-    tapable "^2.0.0"
-    terser-webpack-plugin "^5.0.3"
-    watchpack "^2.0.0"
-    webpack-sources "^2.1.1"
 
 webpack@^5.7.0:
   version "5.10.0"
