@@ -13,7 +13,11 @@ import { Button } from '@automattic/components';
 import { getSelectedSiteSlug } from 'calypso/state/ui/selectors';
 import MarketingToolsFeature from './feature';
 import MarketingToolsHeader from './header';
-import { marketingConnections, marketingTraffic } from 'calypso/my-sites/marketing/paths';
+import {
+	marketingConnections,
+	marketingTraffic,
+	marketingUltimateTrafficGuide,
+} from 'calypso/my-sites/marketing/paths';
 import PageViewTracker from 'calypso/lib/analytics/page-view-tracker';
 import { recordTracksEvent as recordTracksEventAction } from 'calypso/state/analytics/actions';
 
@@ -73,6 +77,12 @@ export const MarketingTools: FunctionComponent< Props > = ( {
 		recordTracksEvent( 'calypso_marketing_tools_start_sharing_button_click' );
 
 		page( marketingConnections( selectedSiteSlug ) );
+	};
+
+	const handleUltimateTrafficGuideClick = () => {
+		recordTracksEvent( 'calypso_marketing_tools_ultimate_traffic_guide_button_click' );
+
+		page( marketingUltimateTrafficGuide( selectedSiteSlug ) );
 	};
 
 	return (
@@ -154,6 +164,16 @@ export const MarketingTools: FunctionComponent< Props > = ( {
 						target="_blank"
 					>
 						{ translate( 'Find your expert' ) }
+					</Button>
+				</MarketingToolsFeature>
+
+				<MarketingToolsFeature
+					title={ translate( 'Introducing the WordPress.com Ultimate Traffic Guide' ) }
+					description={ translate( 'Discover today’s most important traffic secrets' ) }
+					imagePath="/calypso/images/marketing/upwork-logo.png"
+				>
+					<Button onClick={ handleUltimateTrafficGuideClick }>
+						{ translate( 'Download now' ) }
 					</Button>
 				</MarketingToolsFeature>
 			</div>

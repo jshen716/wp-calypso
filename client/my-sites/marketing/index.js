@@ -17,6 +17,7 @@ import {
 	redirectSharingButtons,
 	sharingButtons,
 	traffic,
+	ultimateTrafficGuide,
 } from './controller';
 import { makeLayout, render as clientRender } from 'calypso/controller';
 
@@ -27,6 +28,7 @@ export default function () {
 		'/marketing/sharing-buttons',
 		'/marketing/tools',
 		'/marketing/traffic',
+		'/marketing/ultimate-traffic-guide',
 		'/sharing',
 		'/sharing/buttons',
 	];
@@ -77,6 +79,17 @@ export default function () {
 		siteSelection,
 		navigation,
 		marketingTools,
+		layout,
+		makeLayout,
+		clientRender
+	);
+
+	page(
+		'/marketing/ultimate-traffic-guide/:domain',
+		siteSelection,
+		sites,
+		navigation,
+		ultimateTrafficGuide,
 		layout,
 		makeLayout,
 		clientRender
