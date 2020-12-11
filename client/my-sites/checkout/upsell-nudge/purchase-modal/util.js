@@ -2,7 +2,7 @@
  * External dependencies
  */
 import { useCallback } from 'react';
-import { useCreatePaymentProcessorOnClick } from '@automattic/composite-checkout';
+import { useProcessPayment } from '@automattic/composite-checkout';
 
 /**
  * Internal dependencies
@@ -12,7 +12,7 @@ import notices from 'calypso/notices';
 import { translateResponseCartToWPCOMCart } from 'calypso/my-sites/checkout/composite-checkout/lib/translate-cart';
 
 export function useSubmitTransaction( { cart, storedCard, setStep, onClose, successMessage } ) {
-	const callPaymentProcessor = useCreatePaymentProcessorOnClick();
+	const callPaymentProcessor = useProcessPayment();
 
 	return useCallback( () => {
 		const wpcomCart = translateResponseCartToWPCOMCart( cart );
