@@ -9,7 +9,7 @@ import type { StripeConfiguration } from '@automattic/calypso-stripe';
  */
 import type { ReactStandardAction } from '../types/analytics';
 
-export interface CardProcessorOptions {
+export interface PaymentProcessorOptions {
 	includeDomainDetails: boolean;
 	includeGSuiteDetails: boolean;
 	createUserAndSiteBeforeTransaction: boolean;

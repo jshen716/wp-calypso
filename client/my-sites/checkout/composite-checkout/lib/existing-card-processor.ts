@@ -11,7 +11,7 @@ import type { PaymentProcessorResponse } from '@automattic/composite-checkout';
  */
 import { createTransactionEndpointRequestPayloadFromLineItems } from './translate-cart';
 import { wpcomTransaction } from '../payment-method-helpers';
-import type { CardProcessorOptions } from '../types/payment-processors';
+import type { PaymentProcessorOptions } from '../types/payment-processors';
 import type { TransactionRequestWithLineItems } from '../types/transaction-endpoint';
 import { recordTransactionBeginAnalytics } from './analytics';
 
@@ -19,7 +19,7 @@ const debug = debugFactory( 'calypso:composite-checkout:payment-method-helpers' 
 
 export default async function existingCardProcessor(
 	transactionData: unknown,
-	dataForProcessor: CardProcessorOptions
+	dataForProcessor: PaymentProcessorOptions
 ): Promise< PaymentProcessorResponse > {
 	recordTransactionBeginAnalytics( {
 		reduxDispatch: dataForProcessor.reduxDispatch,
@@ -54,7 +54,7 @@ export default async function existingCardProcessor(
 
 async function submitExistingCardPayment(
 	transactionData: ExistingCardTransactionRequest,
-	transactionOptions: CardProcessorOptions
+	transactionOptions: PaymentProcessorOptions
 ) {
 	debug( 'formatting existing card transaction', transactionData );
 	const formattedTransactionData = createTransactionEndpointRequestPayloadFromLineItems( {
