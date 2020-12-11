@@ -198,9 +198,10 @@ class Help extends React.PureComponent {
 	};
 
 	getCoursesTeaser = () => {
-		if ( ! this.props.showCoursesTeaser ) {
+		// @TODO: Find out if there are times we wouldn't want to show courses
+		/*if ( ! this.props.showCoursesTeaser ) {
 			return null;
-		}
+		}*/
 
 		return (
 			<CompactCard
