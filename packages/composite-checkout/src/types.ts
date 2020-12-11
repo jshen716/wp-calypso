@@ -133,8 +133,10 @@ export type PaymentProcessorResponse =
 	| PaymentProcessorRedirect
 	| PaymentProcessorManual;
 
+export type PaymentProcessorSubmitData = unknown;
+
 export type PaymentProcessorFunction = (
-	submitData: unknown
+	submitData: PaymentProcessorSubmitData
 ) => Promise< PaymentProcessorResponse >;
 
 export enum PaymentProcessorResponseType {
@@ -207,6 +209,11 @@ export interface TransactionStatusManager extends TransactionStatusState {
 	setTransactionPending: SetTransactionPending;
 	setTransactionRedirecting: SetTransactionRedirecting;
 }
+
+export type PaymentProcessorOnClick = (
+	paymentProcessorId: string,
+	processorData: PaymentProcessorSubmitData
+) => Promise< PaymentProcessorResponse | void >;
 
 export type SetTransactionRedirecting = ( url: string ) => void;
 
