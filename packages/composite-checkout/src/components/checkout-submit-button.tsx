@@ -7,7 +7,7 @@ import React from 'react';
  * Internal dependencies
  */
 import joinClasses from '../lib/join-classes';
-import { usePaymentMethod, useCreatePaymentProcessorOnClick } from '../public-api';
+import { usePaymentMethod, useProcessPayment } from '../public-api';
 
 export default function CheckoutSubmitButton( {
 	className,
@@ -16,7 +16,7 @@ export default function CheckoutSubmitButton( {
 	className?: string;
 	disabled?: boolean;
 } ): JSX.Element | null {
-	const onClick = useCreatePaymentProcessorOnClick();
+	const onClick = useProcessPayment();
 
 	const paymentMethod = usePaymentMethod();
 	if ( ! paymentMethod ) {
