@@ -87,7 +87,6 @@ export default function useCreatePaymentCompleteCallback( {
 		( { paymentMethodId, transactionLastResponse }: PaymentCompleteCallbackArguments ): void => {
 			debug( 'payment completed successfully' );
 			const transactionResult = normalizeTransactionResponse( transactionLastResponse );
-			const hideNudge = shouldHideUpsellNudges( { isComingFromUpsell, transactionLastResponse } );
 			const getThankYouPageUrlArguments = {
 				siteSlug: siteSlug || undefined,
 				adminUrl,
@@ -100,7 +99,7 @@ export default function useCreatePaymentCompleteCallback( {
 				isJetpackNotAtomic,
 				productAliasFromUrl,
 				isEligibleForSignupDestinationResult,
-				hideNudge,
+				hideNudge: isComingFromUpsell,
 				isInEditor,
 			};
 			debug( 'getThankYouUrl called with', getThankYouPageUrlArguments );
@@ -213,13 +212,6 @@ export default function useCreatePaymentCompleteCallback( {
 	);
 }
 
-export function withPaymentCompleteCallback< P >( Component: React.ComponentType< P > ) {
-	return function PaymentCompleteWrapper( props: P ): JSX.Element {
-		const paymentCompleteCallback = useCreatePaymentCompleteCallback( {} );
-		return <Component { ...props } paymentCompleteCallback={ paymentCompleteCallback } />;
-	};
-}
-
 function displayRenewalSuccessNotice(
 	responseCart: ResponseCart,
 	purchases: Record< number, Purchase >,
@@ -327,23 +319,4 @@ function recordPaymentCompleteAnalytics( {
 				) || '',
 		} )
 	);
-}
-
-function shouldHideUpsellNudges( {
-	isComingFromUpsell,
-	transactionLastResponse,
-}: {
-	isComingFromUpsell?: boolean;
-	transactionLastResponse: unknown;
-} ): boolean {
-	if ( isComingFromUpsell ) {
-		return true;
-	}
-	if (
-		transactionLastResponse &&
-		( transactionLastResponse as { isComingFromUpsell: boolean } ).isComingFromUpsell
-	) {
-		return true;
-	}
-	return false;
 }
